@@ -1,7 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"pledge-backend/db"
+)
 
 func main() {
 	fmt.Println("init")
+	db.InitMysql()
 }
