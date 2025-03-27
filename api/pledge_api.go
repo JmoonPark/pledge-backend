@@ -1,11 +1,12 @@
 package main
 
 import (
-	"fmt"
 	"pledge-backend/db"
 )
 
 func main() {
-	fmt.Println("init")
+	//init mysql
 	db.InitMysql()
+	//init redis
+	db.InitRedis()
 }
