@@ -6,6 +6,7 @@ import (
 	"pledge-backend/api/models/response"
 	"pledge-backend/api/services"
 	"pledge-backend/api/validate"
+	"pledge-backend/db"
 
 	"github.com/gin-gonic/gin"
 )
@@ -31,4 +32,13 @@ func (c *UserController) Login(ctx *gin.Context) {
 	}
 
 	res.Response(ctx, statecode.CommonSuccess, result)
+}
+
+func (c *UserController) Logout(ctx *gin.Context) {
+	res := response.Gin{Res: ctx}
+	usernameIntf, _ := ctx.Get("username")
+
+	//delete username in redis
+	_, _ = db.RedisDelete(usernameIntf.(string))
+	res.Response(ctx, statecode.CommonSuccess, nil)
 }
