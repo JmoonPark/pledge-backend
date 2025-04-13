@@ -5,8 +5,12 @@ var Config *Conf
 type Conf struct {
 	Mysql        MysqlConfig
 	Redis        RedisConfig
+	TestNet      TestNetConfig
+	MainNet      MainNetConfig
+	Token        TokenConfig
 	DefaultAdmin DefaultAdminConfig
 	Email        EmailConfig
+	Threshold    ThresholdConfig
 	Jwt          JwtConfig
 	Env          EnvConfig
 }
@@ -61,4 +65,28 @@ type EmailConfig struct {
 	Subject  string   `toml:"subject"`
 	To       []string `toml:"to"`
 	Cc       []string `toml:"cc"`
+}
+
+type TestNetConfig struct {
+	ChainId              string `toml:"chain_id"`
+	NetUrl               string `toml:"net_url"`
+	PlgrAddress          string `toml:"plgr_address"`
+	PledgePoolToken      string `toml:"pledge_pool_token"`
+	BscPledgeOracleToken string `toml:"bsc_pledge_oracle_token"`
+}
+
+type MainNetConfig struct {
+	ChainId              string `toml:"chain_id"`
+	NetUrl               string `toml:"net_url"`
+	PlgrAddress          string `toml:"plgr_address"`
+	PledgePoolToken      string `toml:"pledge_pool_token"`
+	BscPledgeOracleToken string `toml:"bsc_pledge_oracle_token"`
+}
+
+type TokenConfig struct {
+	LogoUrl string `toml:"logo_url"`
+}
+
+type ThresholdConfig struct {
+	PledgePoolTokenThresholdBnb string `toml:"pledge_pool_token_threshold_bnb"`
 }
